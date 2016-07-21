@@ -17,17 +17,17 @@ class Bottles
 
   def verse(n)
       v = <<-VERSE
-#{n_bottles_of_beer(n)} of beer on the wall, #{n_bottles_of_beer(n).downcase} of beer.
-#{what_to_do_next(n)}, #{n_bottles_of_beer_remaining(n-1)}.
+#{n_bottles(n)} of beer on the wall, #{n_bottles(n).downcase} of beer.
+#{what_to_do_next(n)}, #{n_bottles_remaining(n-1)}.
 VERSE
   end
 
   private
-    def n_bottles_of_beer_remaining(n)
+    def n_bottles_remaining(n)
       if n < 0
         "99 bottles of beer on the wall"
       else
-        "#{n_bottles_of_beer(n).downcase} of beer on the wall"
+        "#{n_bottles(n).downcase} of beer on the wall"
       end
     end
 
@@ -41,7 +41,7 @@ VERSE
       end
     end
 
-    def n_bottles_of_beer(n)
+    def n_bottles(n)
       if n == 0
         "No more bottles"
       elsif n == 1
