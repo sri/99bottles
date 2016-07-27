@@ -6,28 +6,23 @@ class Bottles
     verses(99, 0)
   end
 
-  def verses(*args)
-    if args.size == 1
-      verse(args.first)
-    elsif args.size == 2
-      start, stop = args
-      start.downto(stop).map { |n| verse(n) }.join("\n")
-    end
+  def verses(start, stop)
+    start.downto(stop).map { |n| verse(n) }.join("\n")
   end
 
   def verse(n)
       v = <<-VERSE
 #{n_bottles(n)} of beer on the wall, #{n_bottles(n).downcase} of beer.
-#{what_to_do_next(n)}, #{n_bottles_remaining(n-1)}.
+#{what_to_do_next(n)}, #{n_bottles_remaining(n-1)} of beer on the wall.
 VERSE
   end
 
   private
     def n_bottles_remaining(n)
       if n < 0
-        "99 bottles of beer on the wall"
+        "99 bottles"
       else
-        "#{n_bottles(n).downcase} of beer on the wall"
+        "#{n_bottles(n).downcase}"
       end
     end
 
